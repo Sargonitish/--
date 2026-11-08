@@ -86,22 +86,22 @@ export default function Hero({ ready }: { ready: boolean }) {
 
       <div className="hero-head">
         <h1 className="hero-title">
-          <span className="ln">BUILDING SOLUTIONS</span>
-          <span className="ln">THAT MAKE AN IMPACT</span>
+          <span className="ln">STUDENT DEVELOPER</span>
+          <span className="ln">CURIOUS LEARNER</span>
         </h1>
-        <span className="pill p1" data-depth="0.8">Engineering Student</span>
-        <span className="pill p2" data-depth="-0.6"><i className="dot" />Open for freelance</span>
+        <span className="pill p1" data-depth="0.8">Tagore Engg College</span>
+        <span className="pill p2" data-depth="-0.6"><i className="dot" />Open for projects</span>
         <span className="pill p3" data-depth="0.6">Chennai, India</span>
-        <span className="pill p4" data-depth="-0.8">Web Dev &amp; AI Innovation</span>
+        <span className="pill p4" data-depth="-0.8">AI, Web &amp; Embedded</span>
       </div>
 
       <div className="hero-stage">
-        <div className="hero-card l" data-depth="-0.5"><b>WEB</b></div>
+        <div className="hero-card l" data-depth="-0.5"><b>CODE</b></div>
         <div className="portrait">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="base" src="/me-cut.webp" alt="Nitish S" />
         </div>
-        <div className="hero-card r" data-depth="-0.5"><b>DEV</b></div>
+        <div className="hero-card r" data-depth="-0.5"><b>BUILD</b></div>
       </div>
 
       <div className="hero-hint">

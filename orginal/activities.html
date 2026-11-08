@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nitish S | Extra-Curriculars</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Syne:wght@800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --bg: #F4F4F1;
+            --text: #000000;
+            --border-color: #000000;
+            --border: 4px solid var(--border-color);
+            --shadow-color: #000000;
+            --shadow: 8px 8px 0px var(--shadow-color);
+            
+            /* Vibrant Palette */
+            --yellow: #FFD600;
+            --blue: #3B82F6;
+            --purple: #A855F7;
+            --green: #22C55E;
+            --red: #EF4444;
+            --pink: #FF66B2;
+            --cyan: #06B6D4;
+            --glass: rgba(255, 255, 255, 0.8);
+            
+            /* Card Backgrounds */
+            --card-1: #FFE4E1; 
+            --card-2: #E0FFFF; 
+            --card-3: #F0FFF0; 
+            --card-4: #FFFACD; 
+        }
+
+        [data-theme="dark"] {
+            /* Dark Mode Overrides */
+            --bg: #0D0D0D;
+            --text: #FFFFFF;
+            --border-color: #FFFFFF;
+            --border: 4px solid var(--border-color);
+            --shadow-color: var(--cyan); 
+            --shadow: 8px 8px 0px var(--shadow-color);
+            --glass: rgba(20, 20, 20, 0.9);
+            
+            /* Neon Palette */
+            --yellow: #FFEA00;
+            --purple: #B266FF;
+            --red: #FF4D4D;
+            --green: #00E676;
+            --blue: #4D94FF;
+            --pink: #FF3399;
+            --cyan: #00E5FF;
+            
+            /* Dark Tinted Card Backgrounds */
+            --card-1: #2D1B2E; 
+            --card-2: #1A2B3C; 
+            --card-3: #1B2E26; 
+            --card-4: #332B1A; 
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
+        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
+        
+        /* Colored Dotted Background */
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            font-family: 'Space Grotesk', sans-serif; 
+            transition: background-color 0.3s, color 0.3s; 
+            line-height: 1.5; 
+            background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+            background-size: 35px 35px;
+        }
+
+        /* --- Animations --- */
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- Modal Styles --- */
+        #cert-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 10001;
+            display: none; justify-content: center; align-items: center; padding: 2rem;
+            backdrop-filter: blur(5px);
+        }
+        .modal-content { 
+            background: var(--card-2); color: var(--text); border: var(--border); 
+            padding: 3rem; max-width: 600px; width: 100%; position: relative; 
+            box-shadow: 12px 12px 0px var(--pink); 
+            animation: popUp 0.3s ease-out forwards; 
+            max-height: 90vh;
+            overflow-y: auto; 
+        }
+        @keyframes popUp { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .close-btn { position: absolute; top: 1rem; right: 1rem; background: var(--red); color: white; border: var(--border); width: 45px; height: 45px; font-weight: 800; font-size: 1.5rem; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: 0.2s; }
+        .close-btn:hover { background: var(--text); transform: scale(1.1); }
+        .contact-btn { display: inline-block; background: var(--pink); color: black; border: var(--border); padding: 1rem 2rem; font-family: 'Syne'; font-size: 1.5rem; text-decoration: none; margin-bottom: 2rem; transition: 0.2s; box-shadow: 6px 6px 0px var(--text); cursor: pointer;}
+        .contact-btn:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--text); background: var(--cyan); }
+
+        /* --- Navigation --- */
+        nav {
+            position: sticky; top: 0; width: 100%; padding: 1rem 5%;
+            display: flex; justify-content: space-between; align-items: center; z-index: 1000;
+            backdrop-filter: blur(12px); background: var(--glass); border-bottom: var(--border);
+        }
+        .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+        .nav-logo { font-family: 'Syne'; font-size: 1.2rem; background: var(--pink); padding: 5px 10px; border: var(--border); box-shadow: 4px 4px 0px var(--cyan); color: black; font-weight: 800; }
+        .nav-portfolio-txt { font-family: 'Syne'; font-size: 1.2rem; text-transform: uppercase; font-weight: 800; color: var(--yellow); -webkit-text-stroke: 1px var(--text); }
+        
+        .nav-links { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 800; text-transform: uppercase; font-size: 0.8rem; margin: 0 0.5rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--cyan); }
+
+        /* --- Sections --- */
+        section { width: 100%; padding: 5rem 5%; border-bottom: var(--border); position: relative; background: var(--bg); }
+        .section-title { font-family: 'Syne'; font-size: 2.5rem; text-transform: uppercase; margin-bottom: 3rem; display: inline-block; background: var(--yellow); color: black; padding: 5px 20px; border: var(--border); box-shadow: 6px 6px 0px var(--blue); }
+
+        /* --- Header --- */
+        .hero-mini { padding: 8rem 5% 4rem; text-align: center; border-bottom: var(--border); background: var(--bg); }
+        .hero-mini h1 { font-family: 'Syne'; font-size: clamp(2.5rem, 8vw, 5rem); text-transform: uppercase; line-height: 0.9; }
+        .text-gradient { background: linear-gradient(90deg, var(--green), var(--cyan), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* --- Activity Cards (Now made for Marquee) --- */
+        .activity-card { width: 380px; flex-shrink: 0; background: var(--card-1); color: var(--text); border: var(--border); padding: 2.5rem; box-shadow: var(--shadow); transition: 0.3s; display: flex; flex-direction: column; white-space: normal; }
+        .activity-card:nth-child(2) { background: var(--card-2); }
+        .activity-card:nth-child(3) { background: var(--card-3); }
+        .activity-card:nth-child(4) { background: var(--card-4); }
+        .activity-card:hover { transform: translate(-6px, -6px); box-shadow: 12px 12px 0px var(--pink); }
+        
+        .activity-icon { font-size: 3rem; margin-bottom: 1rem; display: inline-block; padding: 10px; border: var(--border); background: var(--glass); box-shadow: 4px 4px 0px var(--text); }
+        .activity-title { font-family: 'Syne'; font-size: 2rem; text-transform: uppercase; margin-bottom: 1rem; }
+        .activity-desc { font-weight: 600; font-size: 1.1rem; flex-grow: 1; }
+        .activity-tag { margin-top: 1.5rem; font-family: 'JetBrains Mono'; font-weight: 800; background: var(--bg); padding: 5px 10px; border: 2px solid var(--text); display: inline-block; align-self: flex-start; }
+
+        /* --- Carousels & Event Cards --- */
+        .carousel-container { position: relative; width: 100%; display: flex; align-items: center; }
+        .marquee-wrapper { overflow-x: auto; width: 100%; padding: 1rem 0 3rem 0; scroll-behavior: smooth; scrollbar-width: none; }
+        .marquee-wrapper::-webkit-scrollbar { display: none; } 
+        .marquee-track { display: flex; gap: 2rem; width: max-content; padding: 0 5%; }
+        
+        .nav-arrow {
+            position: absolute; z-index: 10; background: var(--yellow); color: black; border: var(--border);
+            width: 45px; height: 45px; font-weight: 800; font-size: 1.5rem; display: flex; justify-content: center; align-items: center;
+            cursor: pointer; transition: 0.2s; box-shadow: 4px 4px 0px var(--text);
+        }
+        .nav-arrow:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px var(--pink); background: var(--cyan); }
+        .left-arrow { left: 1%; }
+        .right-arrow { right: 1%; }
+
+        .event-card { width: 350px; background: var(--card-3); color: var(--text); border: var(--border); padding: 2rem; box-shadow: var(--shadow); flex-shrink: 0; transition: 0.2s; white-space: normal; cursor: pointer; }
+        .event-card:nth-child(even) { background: var(--card-4); }
+        .event-card:hover { transform: translate(-4px, -4px); box-shadow: 8px 8px 0px var(--cyan); border-color: var(--cyan); }
+        .click-hint { margin-top: 1.5rem; display: inline-block; font-weight: 800; font-family: 'JetBrains Mono'; color: var(--pink); border-top: 2px solid; padding-top: 0.5rem; }
+
+        /* --- Footer --- */
+        footer { padding: 4rem 5%; background: var(--border-color); color: var(--bg); text-align: center; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-portfolio-txt { font-size: 1rem; }
+            section { padding: 4rem 5%; }
+            .event-card, .activity-card { width: 280px; }
+            .nav-arrow { width: 35px; height: 35px; font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cert-modal" onclick="closeCertModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeCertModal(event)">X</button>
+            <div style="font-family:'JetBrains Mono'; color:var(--purple); font-weight:800; margin-bottom:0.5rem;">[ ACTIVITY_RECORD ]</div>
+            <h2 id="modal-title" style="font-family:'Syne'; font-size: 2.5rem; text-transform: uppercase; margin-bottom: 1rem; line-height: 1;">Title</h2>
+            <div style="background: var(--yellow); color: black; border: var(--border); padding: 1rem; font-family: 'JetBrains Mono'; margin-bottom: 2rem; display: inline-block; font-weight: 800;" id="modal-issuer">Issuer</div>
+            <h3 style="font-family:'Syne'; margin-bottom: 0.5rem; color: var(--blue);">Details:</h3>
+            <p id="modal-skills" style="font-size: 1.1rem; line-height: 1.6; border-left: 4px solid var(--pink); padding-left: 1rem; margin-bottom: 2rem;"></p>
+            
+            <button id="view-cert-btn" class="contact-btn" style="padding: 0.5rem 1rem; font-size: 1rem; background: var(--cyan); width: 100%; margin-bottom: 0;" onclick="toggleCertImage()">VIEW CERTIFICATE</button>
+            
+            <div id="modal-img-container" style="display: none; position: relative; margin-top: 1.5rem;">
+                <button id="modal-arrow-left" class="nav-arrow" style="left: -20px; top: 50%; transform: translateY(-50%); display: none; width: 40px; height: 40px; font-size: 1.2rem;" onclick="changeCertImage(-1)">&#8592;</button>
+                <img id="modal-cert-img" src="" alt="Certificate Image" style="width: 100%; border: var(--border); box-shadow: 4px 4px 0px var(--text); display: block;">
+                <button id="modal-arrow-right" class="nav-arrow" style="right: -20px; top: 50%; transform: translateY(-50%); display: none; width: 40px; height: 40px; font-size: 1.2rem;" onclick="changeCertImage(1)">&#8594;</button>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <a href="index.html" class="nav-brand">
+            <div class="nav-logo">&#8592; BACK</div>
+            <div class="nav-portfolio-txt">Main Terminal</div>
+        </a>
+        <div class="nav-links">
+            <a href="index.html#about">About</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="#activities">Activities</a>
+            <a href="#certs">Certificates</a>
+        </div>
+        <button onclick="toggleTheme()" style="padding:5px 10px; font-weight:800; cursor:pointer; background:var(--purple); color:rgb(255, 255, 255); border:var(--border);">MODE</button>
+    </nav>
+
+    <header class="hero-mini reveal active">
+        <h1><span class="text-gradient">Beyond The Screen</span></h1>
+        <p style="font-family: 'JetBrains Mono'; font-weight: 800; margin-top: 1rem; font-size: 1.2rem;">// Executing extra_curriculars.sh</p>
+    </header>
+
+    <section id="activities" class="reveal" style="padding-left: 0; padding-right: 0;">
+        <div style="padding: 0 5%;"><h2 class="section-title" style="background:var(--cyan); color:black;">Active_Pursuits</h2></div>
+        
+        <div class="carousel-container">
+            <button class="nav-arrow left-arrow" onclick="scrollCarousel(this, -1)">&#8592;</button>
+            <div class="marquee-wrapper">
+                <div class="marquee-track">
+                    
+                    <div class="activity-card">
+                        <div class="activity-icon" style="background: var(--red); color: white;">🥋</div>
+                        <h3 class="activity-title" style="color: var(--red);">Karate</h3>
+                        <p class="activity-desc">Discipline, focus, and physical endurance. Training in martial arts helps me maintain a clear mindset and sharp reflexes, which directly translates to how I approach complex problem-solving in my daily life.</p>
+                        <div class="activity-tag" style="color: var(--red);">// PHYSICAL_LOGIC</div>
+                    </div>
+
+                    <div class="activity-card">
+                        <div class="activity-icon" style="background: var(--yellow); color: black;">🥗</div>
+                        <h3 class="activity-title" style="color: var(--blue);">Fireless Cooking</h3>
+                        <p class="activity-desc">Resourcefulness at its best. Participating in fireless cooking challenges pushes me to think creatively within strict constraints, assembling ingredients to build something great without relying on standard tools.</p>
+                        <div class="activity-tag" style="color: var(--blue);">// CREATIVE_ASSEMBLY</div>
+                    </div>
+
+                    <div class="activity-card">
+                        <div class="activity-icon" style="background: var(--green); color: black;">🗺️</div>
+                        <h3 class="activity-title" style="color: var(--purple);">Treasure Hunt</h3>
+                        <p class="activity-desc">Real-world algorithmic pathfinding. I love the thrill of deciphering clues, optimizing routes, and working closely with a team under time pressure to reach the final objective before anyone else.</p>
+                        <div class="activity-tag" style="color: var(--purple);">// EVENT_ROUTING</div>
+                    </div>
+
+                    <div class="activity-card">
+                        <div class="activity-icon" style="background: var(--cyan); color: black;">🏊‍♂️</div>
+                        <h3 class="activity-title" style="color: var(--cyan);">Swimming</h3>
+                        <p class="activity-desc">Building stamina and perfecting technique. Swimming provides a full-body workout and a meditative space to clear my mind, teaching me the value of pacing and consistent breathing under pressure.</p>
+                        <div class="activity-tag" style="color: var(--cyan);">// AQUATIC_ENDURANCE</div>
+                    </div>
+
+                </div>
+            </div>
+            <button class="nav-arrow right-arrow" onclick="scrollCarousel(this, 1)">&#8594;</button>
+        </div>
+    </section>
+
+    <section id="certs" class="reveal" style="padding-left: 0; padding-right: 0;">
+        <div style="padding: 0 5%;"><h2 class="section-title" style="background: var(--purple); color: white;">Achievement_Records</h2></div>
+        
+        <div class="carousel-container">
+            <button class="nav-arrow left-arrow" onclick="scrollCarousel(this, -1)">&#8592;</button>
+            <div class="marquee-wrapper">
+                <div class="marquee-track">
+                    
+                    <div class="event-card" onclick="openCert('Karate Championship', 'State Martial Arts Association', 'Demonstrated discipline, combat techniques, and endurance in the state-level tournament.', ['karate21.webp'])">
+                        <div>
+                            <h3 style="font-family:'Syne'; font-size: 1.5rem; color: var(--red);">Karate Belt Certification</h3>
+                            <p style="margin: 0.5rem 0;"><strong>Event:</strong> State Tournament</p>
+                            <p style="margin: 0.5rem 0; color: var(--purple);"><strong>Level:</strong> Advanced</p>
+                        </div>
+                        <span class="click-hint">[ CLICK TO VIEW CERTIFICATE ]</span>
+                    </div>
+                    
+                    <div class="event-card" onclick="openCert('Master Chef: Fireless Edition', 'College Cultural Fest', 'Awarded for creative presentation, taste, and resourcefulness in assembling dishes without heat.', ['tagorefirelesscooking.webp'])">
+                        <div>
+                            <h3 style="font-family:'Syne'; font-size: 1.5rem; color: var(--blue);">Fireless Cooking Winner</h3>
+                            <p style="margin: 0.5rem 0;"><strong>Event:</strong> Cultural Fest 2025</p>
+                            <p style="margin: 0.5rem 0; color: var(--purple);"><strong>Result:</strong> 1st Place</p>
+                        </div>
+                        <span class="click-hint">[ CLICK TO VIEW CERTIFICATE ]</span>
+                    </div>
+                    
+                    <div class="event-card" onclick="openCert('Campus Treasure Hunt', 'Tech Symposium', 'Successfully deciphered technical and logical clues to optimize the path and reach the final goal first.', ['treasure_cert.jpg'])">
+                        <div>
+                            <h3 style="font-family:'Syne'; font-size: 1.5rem; color: var(--green);">Treasure Hunt Champion</h3>
+                            <p style="margin: 0.5rem 0;"><strong>Event:</strong> Tech Symposium</p>
+                            <p style="margin: 0.5rem 0; color: var(--purple);"><strong>Result:</strong> Winning Team</p>
+                        </div>
+                        <span class="click-hint">[ CLICK TO VIEW CERTIFICATE ]</span>
+                    </div>
+
+                    <div class="event-card" onclick="openCert('Swimming Championship', 'Regional Sports Board', 'Demonstrated exceptional aquatic endurance and speed in competitive freestyle swimming.', ['swimming_cert.jpg'])">
+                        <div>
+                            <h3 style="font-family:'Syne'; font-size: 1.5rem; color: var(--cyan);">Swimming Medallist</h3>
+                            <p style="margin: 0.5rem 0;"><strong>Event:</strong> Regional Meet</p>
+                            <p style="margin: 0.5rem 0; color: var(--purple);"><strong>Result:</strong> Gold</p>
+                        </div>
+                        <span class="click-hint">[ CLICK TO VIEW CERTIFICATE ]</span>
+                    </div>
+                    
+                </div>
+            </div>
+            <button class="nav-arrow right-arrow" onclick="scrollCarousel(this, 1)">&#8594;</button>
+        </div>
+    </section>
+
+    <footer>
+        <h2 style="font-family: 'Syne'; font-size: 2rem;">NITISH.S</h2>
+        <p style="margin-top: 2rem; opacity: 0.4;">© 2026 Nitish S // Chennai, India</p>
+    </footer>
+
+    <script>
+        // --- SCROLL REVEAL ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // --- THEME TOGGLE ---
+        function toggleTheme() {
+            const body = document.body;
+            body.setAttribute('data-theme', body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        }
+
+        // --- CERTIFICATE MODAL LOGIC ---
+        let currentCertImages = [];
+        let currentCertIndex = 0;
+
+        function openCert(title, issuer, skills, imageList) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-issuer').innerText = "Issued By: " + issuer;
+            document.getElementById('modal-skills').innerText = skills;
+            
+            if (typeof imageList === 'string' && imageList.trim() !== '') {
+                currentCertImages = [imageList];
+            } else if (Array.isArray(imageList) && imageList.length > 0) {
+                currentCertImages = imageList;
+            } else {
+                currentCertImages = [];
+            }
+            
+            currentCertIndex = 0;
+            const certImg = document.getElementById('modal-cert-img');
+            const viewBtn = document.getElementById('view-cert-btn');
+            const imgContainer = document.getElementById('modal-img-container');
+            
+            imgContainer.style.display = 'none';
+            
+            if (currentCertImages.length > 0) {
+                certImg.src = currentCertImages[0];
+                viewBtn.style.display = 'block';
+                viewBtn.innerText = 'VIEW CERTIFICATE';
+                viewBtn.style.background = 'var(--cyan)';
+                updateModalArrows();
+            } else {
+                viewBtn.style.display = 'none'; 
+            }
+            
+            document.getElementById('cert-modal').style.display = 'flex';
+        }
+
+        function updateModalArrows() {
+            const leftArrow = document.getElementById('modal-arrow-left');
+            const rightArrow = document.getElementById('modal-arrow-right');
+            
+            if (currentCertImages.length > 1) {
+                leftArrow.style.display = currentCertIndex > 0 ? 'flex' : 'none';
+                rightArrow.style.display = currentCertIndex < currentCertImages.length - 1 ? 'flex' : 'none';
+            } else {
+                leftArrow.style.display = 'none';
+                rightArrow.style.display = 'none';
+            }
+        }
+
+        function changeCertImage(step) {
+            currentCertIndex += step;
+            if (currentCertIndex < 0) currentCertIndex = 0;
+            if (currentCertIndex >= currentCertImages.length) currentCertIndex = currentCertImages.length - 1;
+            
+            document.getElementById('modal-cert-img').src = currentCertImages[currentCertIndex];
+            updateModalArrows();
+        }
+
+        function closeCertModal(event) {
+            document.getElementById('cert-modal').style.display = 'none';
+        }
+
+        function toggleCertImage() {
+            const imgContainer = document.getElementById('modal-img-container');
+            const viewBtn = document.getElementById('view-cert-btn');
+            
+            if (imgContainer.style.display === 'none') {
+                imgContainer.style.display = 'block';
+                viewBtn.innerText = 'HIDE CERTIFICATE';
+                viewBtn.style.background = 'var(--yellow)'; 
+                updateModalArrows(); 
+            } else {
+                imgContainer.style.display = 'none';
+                viewBtn.innerText = 'VIEW CERTIFICATE';
+                viewBtn.style.background = 'var(--cyan)';
+            }
+        }
+
+        // --- CAROUSEL ARROW LOGIC ---
+        function scrollCarousel(button, direction) {
+            const container = button.parentElement.querySelector('.marquee-wrapper');
+            let card = container.querySelector('.event-card');
+            
+            // If it's the activity pursuits section, target the activity-card class instead
+            if (!card) {
+                card = container.querySelector('.activity-card');
+            }
+            
+            const track = container.querySelector('.marquee-track');
+            const gap = parseInt(window.getComputedStyle(track).gap) || 32;
+            const scrollAmount = card.offsetWidth + gap; 
+            
+            container.scrollBy({ 
+                left: scrollAmount * direction, 
+                behavior: 'smooth' 
+            });
+        }
+    </script>
+</body>
+</html>

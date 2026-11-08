@@ -12,7 +12,7 @@ import {
 
 /* ---------- Curved ribbon (text rides an arc, speeds up with scroll) ---------- */
 
-const RIBBON_TEXT = "FREELANCE  •  PORTFOLIOS  •  WEB DEV  •  AI INNOVATION  •  PYTHON  •  JAVA  •  C++  •  DATABASES  •  ";
+const RIBBON_TEXT = "STUDENT DEVELOPER  •  REACT.JS  •  NODE.JS  •  PYTHON  •  AI & EDTECH  •  IOT & EMBEDDED  •  HACKATHONS  •  ";
 const ARC = "M-120 330Q720 -90 1560 330";
 
 export function Ribbon() {
@@ -60,7 +60,7 @@ export function Ribbon() {
 /* ---------- About: scroll-filled statement + stats ---------- */
 
 const STATEMENT =
-  "I’m Nitish, a results-driven engineering student with hands-on experience in web development, software design, and AI-driven innovation.";
+  "I’m an engineering student exploring artificial intelligence, software systems, and embedded technology. I build projects, compete in hackathons, and turn ideas into working code.";
 
 export function About() {
   const root = useRef<HTMLElement>(null);
@@ -129,7 +129,7 @@ export function About() {
       </div>
       </div>
       <p className="about-sub">
-        Specialized in Python, Java, C++, and frontend web development, with databases in MySQL and MongoDB. Based in {me.location}, building student portfolios and AI-driven solutions.
+        Exploring core Computer Science concepts, scalable web systems, data structures, and hardware-software interaction at Tagore Engineering College, Chennai.
       </p>
       <div className="stats">
         {stats.map((s) => (
@@ -465,10 +465,10 @@ export function Work() {
   }, [list]);
 
   return (
-    <section className="work" id="work" ref={root}>
+    <section className="work" id="projects" ref={root}>
       <div className="work-head">
-        <p className="eyebrow">FEATURED PROJECTS</p>
-        <h2 className="work-title"><span>SELECTED</span><span>WORKS</span></h2>
+        <p className="eyebrow">CORE PROJECTS</p>
+        <h2 className="work-title"><span>FEATURED</span><span>PROJECTS</span></h2>
         <p className="work-count">{String(total).padStart(2, "0")} projects<br />and counting</p>
       </div>
       <div className="chips" role="tablist" aria-label="Filter projects">
@@ -816,6 +816,7 @@ export function Footer() {
         </div>
         <nav className="ft-col" aria-label="Footer">
           <h4>Main menu</h4>
+          <a href="#projects">Projects</a>
           <a href="#services">Services</a>
           <a href="#experience">Experience</a>
           <a href="#about">About</a>
