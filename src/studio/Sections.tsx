@@ -816,7 +816,6 @@ export function Footer() {
         </div>
         <nav className="ft-col" aria-label="Footer">
           <h4>Main menu</h4>
-          <a href="#work">Work</a>
           <a href="#services">Services</a>
           <a href="#experience">Experience</a>
           <a href="#about">About</a>

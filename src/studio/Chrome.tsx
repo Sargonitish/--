@@ -69,8 +69,8 @@ export function Nav() {
   return (
     <header className="nav">
       <nav className="nav-l">
-        <a className="pill-w" href="#work" data-cursor="GO">Work</a>
         <a className="pill-w" href="#services" data-cursor="GO">Services</a>
+        <a className="pill-w" href="#experience" data-cursor="GO">Experience</a>
       </nav>
       <a className="logo" href="#top" aria-label="Nitish S, home">NITISH</a>
       <div className="nav-r">

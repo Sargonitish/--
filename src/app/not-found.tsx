@@ -16,7 +16,7 @@ export default function NotFound() {
         <p className="nf-sub">The link may be old, or I never built it. Head back to the work that does exist.</p>
         <div className="nf-btns">
           <Link className="ft-call" href="/">Back home</Link>
-          <Link className="nf-ghost" href="/#work">See my work</Link>
+          <Link className="nf-ghost" href="/#experience">Experience</Link>
         </div>
       </div>
     </main>
