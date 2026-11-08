@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <rect width="120" height="120" rx="24" fill="#003057"/>
+  <rect x="10" y="10" width="100" height="100" rx="18" fill="#00857c" stroke="#003057" stroke-width="4"/>
+  <text x="60" y="72" font-family="Arial, sans-serif" font-weight="900" font-size="52" fill="#ffffff" text-anchor="middle">P</text>
+  <text x="60" y="94" font-family="Arial, sans-serif" font-weight="700" font-size="11" fill="#ffffff" letter-spacing="1.5" text-anchor="middle">PEARSON</text>
+</svg>
